@@ -71,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
         textViewName.setText(name);
         if(gender == 1){
             imageViewProfile.setImageResource(R.drawable.male);
-        }else if(){
-
+        }else if(gender == 0){
+            imageViewProfile.setImageResource(R.drawable.female);
+        }else if(gender == -1){
+            imageViewProfile.setImageResource(R.drawable.profile);
         }
   }
 }
