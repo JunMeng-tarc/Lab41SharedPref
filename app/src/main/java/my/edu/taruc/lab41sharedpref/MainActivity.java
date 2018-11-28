@@ -1,6 +1,7 @@
 package my.edu.taruc.lab41sharedpref;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,8 +10,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String PREF_NAME = "my.edu.taruc.lab41sharedpref";
+    private SharedPreferences sharedPreferences;
+    private TextView textViewName;
+    private ImageView imageViewProfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,22 +57,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        String name;
-//        int gender; //default = -1, male = 1, female = 0
+    @Override
+    protected void onResume() {
+        super.onResume();
+        String name;
+        int gender;
+        SharedPreferences sharedPreferences = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+        name = sharedPreferences.getString(getString(R.string.user_name),
+                getString(R.string.no_name));
 
-//        name = sharedPreferences.getString(getString(R.string.user_name),
-//                getString(R.string.no_name));
-//
-//        gender = sharedPreferences.getInt(getString(R.string.gender),
-//                -1);
-//        editTextName.setText(name);
-//        if(gender == 1){
-//            radioButtonMale.setChecked(true);
-//        }else if(gender == 0){
-//            radioButtonFemale.setChecked(true);
-//        }
-//  }
+        gender = sharedPreferences.getInt(getString(R.string.gender),
+                -1);
+        textViewName.setText(name);
+        if(gender == 1){
+            imageViewProfile.setImageResource(R.drawable.male);
+        }else if(){
+
+        }
+  }
 }
